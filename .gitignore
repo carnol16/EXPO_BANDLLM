@@ -1,0 +1,19 @@
+# Runs and output
+runs/
+run_songs/
+output/
+song_states/
+
+# Claude
+.claude/
+docs/superpowers/
+
+# Caches
+__pycache__/
+*.py[cod]
+.cache/
+*_cache/
+*.cache
+
+# Models
+models/

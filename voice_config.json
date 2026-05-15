@@ -1,0 +1,18 @@
+{
+  "singer": {
+    "voice_id": "bm_lewis",
+    "voice_description": "A man with a raw, hoarse voice speaks in a clipped American accent. His delivery is fast and confrontational, with a strained, gritty quality and an abrasive edge. The recording sounds rough and unpolished."
+  },
+  "guitarist": {
+    "voice_id": "am_adam",
+    "voice_description": "A man speaks rapidly and loudly in a brash American accent. His voice is nasal and sharp, with explosive clipped consonants and a restless, agitated energy that borders on manic."
+  },
+  "bassist": {
+    "voice_id": "am_puck",
+    "voice_description": "A man with a deep, gravelly voice speaks slowly and deliberately in a flat American accent. His delivery is cold and measured, with heavy pauses and a low menacing resonance."
+  },
+  "drummer": {
+    "voice_id": "bm_george",
+    "voice_description": "A man with a tense, wiry voice speaks quickly in a clipped American accent. His delivery is restless and frustrated, with an urgent manic energy and sharp staccato bursts."
+  }
+}

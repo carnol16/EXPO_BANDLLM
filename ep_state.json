@@ -1,0 +1,45 @@
+{
+  "band_name": "Feedback Symphony",
+  "tracks": [
+    {
+      "day": "sunday_1",
+      "title": "Fractured Grid",
+      "variants": [
+        {
+          "path": "output\\track_sunday_1_20260514_103853_v1\\f7829e23-836e-2720-5f81-59e401a46ddb.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_sunday_1_20260514_103853_v2\\c693a22d-ffeb-17f9-d492-4d90a05bb37c.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_sunday_1_20260514_103853_v3\\de1d61f6-8949-49cd-061f-a2ce5c1bfbdf.wav",
+          "duration_sec": 0.0
+        }
+      ],
+      "selected_variant": 0,
+      "generated_at": "2026-05-14T10:51:02.025296"
+    },
+    {
+      "day": "sunday_2",
+      "title": "Feedback Symphony",
+      "variants": [
+        {
+          "path": "output\\track_sunday_2_20260514_215232_v1\\acbb0eaf-8a3c-9af5-9243-179a96023c6d.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_sunday_2_20260514_215232_v2\\54d287d8-c27a-9b4c-9955-ec566259cc1f.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_sunday_2_20260514_215232_v3\\1bf113a1-0a3e-52fe-7d0d-b57d6617a081.wav",
+          "duration_sec": 0.0
+        }
+      ],
+      "selected_variant": 0,
+      "generated_at": "2026-05-14T22:10:36.607352"
+    }
+  ]
+}
