@@ -1,0 +1,57 @@
+{
+  "title": "Feedback War",
+  "genre": "deathcore",
+  "tempo_bpm": 120,
+  "key": "E minor",
+  "mood": "chaotic, intense",
+  "lyrics": [
+    {
+      "text": "You're all just a bunch of spineless, tone-deaf hacks who can't even begin to grasp the concept of chaos. Your 'music' is nothing but noise pollution.",
+      "author": "singer"
+    },
+    {
+      "text": "This is a joke, right? You're all just pretending to make music while secretly pissing away the last shred of creativity.",
+      "author": "singer"
+    },
+    {
+      "text": "You're right, we'll see if anyone can grasp the concept of your double-kick. I guess my 'noise' is what you call music.",
+      "author": "bassist"
+    },
+    {
+      "text": "Then *scream with me*, you little lyric-worm!",
+      "author": "drummer"
+    },
+    {
+      "text": "Then *piss away with me*, you pretentious wrecking ball!",
+      "author": "drummer"
+    },
+    {
+      "text": "You're all just a bunch of spineless, tone-deaf hacks who can't even begin to grasp the concept of chaos. Your 'music' is nothing but noise pollution.",
+      "author": "singer"
+    }
+  ],
+  "structure": [
+    "intro",
+    "verse",
+    "chorus",
+    "breakdown"
+  ],
+  "instruments": [
+    "drums",
+    "guitar",
+    "bass",
+    "vocals"
+  ],
+  "vibe_notes": "chaotic, intense, feedback, war",
+  "acestep_caption": null,
+  "agreed_at": {
+    "title": "2026-05-12T03:04:48.882228",
+    "tempo_bpm": "2026-05-12T03:03:12.732928",
+    "key": "2026-05-12T03:03:12.740928",
+    "mood": "2026-05-12T03:04:48.900229",
+    "lyrics": "2026-05-12T03:04:48.907743",
+    "structure": "2026-05-12T03:04:48.914744",
+    "instruments": "2026-05-12T03:04:48.921744",
+    "vibe_notes": "2026-05-12T03:04:48.928743"
+  }
+}

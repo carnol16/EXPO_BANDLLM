@@ -40,6 +40,78 @@
       ],
       "selected_variant": 0,
       "generated_at": "2026-05-14T22:10:36.607352"
+    },
+    {
+      "day": "monday_1",
+      "title": "Chaos Creation",
+      "variants": [
+        {
+          "path": "output\\track_monday_1_20260525_201759_v1\\f747da11-b6fe-83fe-fd6d-89d6dc992e61.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_monday_1_20260525_201759_v2\\1a3fe11f-b96c-6c66-0e9d-7b26ae6af553.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_monday_1_20260525_201759_v3\\e13b1fb0-7973-aebf-0c30-f647cab09b1a.wav",
+          "duration_sec": 0.0
+        }
+      ],
+      "selected_variant": 0,
+      "generated_at": "2026-05-25T20:29:18.608133"
+    },
+    {
+      "day": "monday_2",
+      "title": "Riff Rebellion",
+      "variants": [
+        {
+          "path": "output\\track_monday_2_20260525_205301_v1\\ff52538b-34fa-f62b-a97f-b4e8494f0892.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_monday_2_20260525_205301_v2\\e56e9efc-83ea-a2bd-d03f-3e5dd8cde0ca.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_monday_2_20260525_205301_v3\\3fcdc08e-98d2-0b91-9d80-dbc6138ea808.wav",
+          "duration_sec": 0.0
+        }
+      ],
+      "selected_variant": 0,
+      "generated_at": "2026-05-25T21:03:02.359219"
+    },
+    {
+      "day": "tuesday_1",
+      "title": "Feedback Symphony",
+      "variants": [
+        {
+          "path": "output\\track_tuesday_1_20260525_210740_v1\\11d24526-d136-357c-071f-d6c884e93284.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_tuesday_1_20260525_210740_v2\\3c32f0c3-de67-0d86-252b-a320be9a8db0.wav",
+          "duration_sec": 0.0
+        }
+      ],
+      "selected_variant": 0,
+      "generated_at": "2026-05-25T21:24:14.348235"
+    },
+    {
+      "day": "tuesday_2",
+      "title": "Echoes of Anarchy",
+      "variants": [
+        {
+          "path": "output\\track_tuesday_2_20260525_212940_v1\\410a68f3-c689-331d-7bff-3f4451b82d0a.wav",
+          "duration_sec": 0.0
+        },
+        {
+          "path": "output\\track_tuesday_2_20260525_212940_v2\\705eced2-d4ef-c348-2872-0e097107e168.wav",
+          "duration_sec": 0.0
+        }
+      ],
+      "selected_variant": 0,
+      "generated_at": "2026-05-25T21:34:49.312767"
     }
   ]
 }

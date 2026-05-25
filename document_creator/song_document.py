@@ -65,7 +65,7 @@ class SongDocument:
                 try:
                     os.replace(tmp_path, path)
                     break
-                except PermissionError:
+                except (PermissionError, FileNotFoundError):
                     if attempt == 4:
                         raise
                     time.sleep(0.05 * (attempt + 1))

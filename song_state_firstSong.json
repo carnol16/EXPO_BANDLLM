@@ -1,0 +1,61 @@
+{
+  "title": "Feedback Symphony",
+  "genre": "deathcore",
+  "tempo_bpm": 120,
+  "key": "E minor",
+  "mood": "chaotic, intense",
+  "lyrics": [
+    {
+      "text": "I'm the noise you can't ignore",
+      "author": "guitarist"
+    },
+    {
+      "text": "Your ego's the feedback I feed",
+      "author": "guitarist"
+    },
+    {
+      "text": "Let's burn this place to the ground",
+      "author": "singer"
+    },
+    {
+      "text": "I'll be the one to silence your war",
+      "author": "bassist"
+    },
+    {
+      "text": "Your solos are just screams in the dark",
+      "author": "guitarist"
+    },
+    {
+      "text": "I'll make your bassline scream back",
+      "author": "bassist"
+    },
+    {
+      "text": "You're all just a bunch of noise",
+      "author": "singer"
+    }
+  ],
+  "structure": [
+    "intro",
+    "verse",
+    "chorus",
+    "breakdown"
+  ],
+  "instruments": [
+    "guitar",
+    "bass",
+    "drums",
+    "vocals"
+  ],
+  "vibe_notes": "raw, chaotic, intense",
+  "acestep_caption": null,
+  "agreed_at": {
+    "title": "2026-05-11T17:51:18.083718",
+    "tempo_bpm": "2026-05-11T17:51:18.101450",
+    "key": "2026-05-11T17:51:18.106434",
+    "mood": "2026-05-11T17:51:18.112443",
+    "lyrics": "2026-05-11T17:51:18.117079",
+    "structure": "2026-05-11T17:51:18.189315",
+    "instruments": "2026-05-11T17:51:18.240313",
+    "vibe_notes": "2026-05-11T17:51:18.245323"
+  }
+}

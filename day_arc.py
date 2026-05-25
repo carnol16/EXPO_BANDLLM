@@ -1,7 +1,6 @@
 import asyncio
 import dataclasses
 import datetime
-import gc
 import json
 import os
 import random
@@ -71,11 +70,11 @@ DAY_CONFIGS = [
 class DayArc:
 
     # Fast-mode timing (minutes of real time per "day")
-    _FAST_SESSION_MINUTES = 30
+    _FAST_SESSION_MINUTES = 10
     _FAST_BAND_NAME_MINUTES = 8
-    _FAST_MIDNIGHT_MINUTES = 30
+    _FAST_MIDNIGHT_MINUTES = 2
     _FAST_THREE_QUARTER_MINUTES = int(_FAST_SESSION_MINUTES * 0.75)  # 22 min
-    _FAST_SLEEP_OFFSET_MINUTES = 3
+    _FAST_SLEEP_OFFSET_MINUTES = 1
     _FAST_PARTY_MINUTES = 35
 
     # Real-mode timing — start midnight Monday → all tracks done by Thursday 5 PM (89h).
@@ -202,8 +201,8 @@ class DayArc:
         injection = f"You just spent all day arguing about {summary}. Session's over. Keep talking."
         self.inject_callback(injection)
 
-        await asyncio.to_thread(self._extract_song_fields)
-        await asyncio.to_thread(self._distill_acestep_caption)
+        await self._extract_song_fields()
+        await self._distill_acestep_caption()
 
         base = datetime.datetime.now()
         schedule = {}
@@ -227,7 +226,7 @@ class DayArc:
 
     # ------------------------------------------------------------------ extraction
 
-    def _extract_song_fields(self, band_name_only=False):
+    async def _extract_song_fields(self, band_name_only=False):
         try:
             with open("conv_log.jsonl", "r") as f:
                 lines = f.readlines()
@@ -245,18 +244,11 @@ class DayArc:
                 continue
         transcript = "\n".join(transcript_parts)
 
-        try:
-            from llama_cpp import Llama
-            from hardware import detect_hardware_profile
-            _profile = detect_hardware_profile()
-            _extraction_gpu_layers = -1 if _profile.name == "METAL" else 0
-            llm = Llama(
-                model_path=self.moderator_model_path,
-                n_ctx=4096,
-                n_gpu_layers=_extraction_gpu_layers,
-                verbose=False,
-            )
+        if self.coordinator is None:
+            print("[DayArc] No coordinator — skipping LLM extraction")
+            return
 
+        try:
             if band_name_only:
                 system_msg = "You are extracting a band name from a conversation. Return only valid JSON, no explanation."
                 user_msg = (
@@ -278,17 +270,17 @@ class DayArc:
                     "- vibe_notes: string or null (freeform texture description)\n"
                 )
 
-            result = llm.create_chat_completion(
-                messages=[
-                    {"role": "system", "content": system_msg},
-                    {"role": "user", "content": user_msg},
-                ],
-                max_tokens=800,
-                temperature=0.2,
-            )
+            async with self.coordinator._llm_lock:
+                result = await asyncio.to_thread(
+                    self.coordinator.llm.create_chat_completion,
+                    messages=[
+                        {"role": "system", "content": system_msg},
+                        {"role": "user", "content": user_msg},
+                    ],
+                    max_tokens=800,
+                    temperature=0.2,
+                )
             raw = result["choices"][0]["message"]["content"]
-            del llm
-            gc.collect()
 
         except Exception as e:
             print(f"[DayArc] Extraction LLM failed: {e}")
@@ -325,7 +317,7 @@ class DayArc:
 
     # ------------------------------------------------------------------ ACE-Step caption distillation
 
-    def _distill_acestep_caption(self):
+    async def _distill_acestep_caption(self):
         """Use the moderator LLM to write a rich ACE-Step 1.5 caption from the session summary."""
         try:
             with open("conv_log.jsonl", "r", encoding="utf-8") as f:
@@ -380,27 +372,21 @@ class DayArc:
             "Caption:"
         )
 
+        if self.coordinator is None:
+            print("[DayArc] No coordinator — skipping caption distillation")
+            return
+
         try:
-            from llama_cpp import Llama
-            from hardware import detect_hardware_profile
-            _profile = detect_hardware_profile()
-            _gpu_layers = -1 if _profile.name == "METAL" else 0
-            llm = Llama(
-                model_path=self.moderator_model_path,
-                n_ctx=4096,
-                n_gpu_layers=_gpu_layers,
-                verbose=False,
-            )
-            result = llm.create_chat_completion(
-                messages=[
-                    {"role": "system", "content": system_msg},
-                    {"role": "user", "content": user_msg},
-                ],
-                max_tokens=500,
-                temperature=0.4,
-            )
-            del llm
-            gc.collect()
+            async with self.coordinator._llm_lock:
+                result = await asyncio.to_thread(
+                    self.coordinator.llm.create_chat_completion,
+                    messages=[
+                        {"role": "system", "content": system_msg},
+                        {"role": "user", "content": user_msg},
+                    ],
+                    max_tokens=500,
+                    temperature=0.4,
+                )
         except Exception as e:
             print(f"[DayArc] Caption distillation LLM failed: {e}")
             return
@@ -645,7 +631,7 @@ class DayArc:
         if elapsed >= datetime.timedelta(minutes=threshold_min) and not self._band_name_extracted:
             self._band_name_extracted = True  # guard first — prevents retry loop on extraction failure
             self.inject_callback("Name's locked. Now — what's the first track about?")
-            await asyncio.to_thread(self._extract_song_fields, True)
+            await self._extract_song_fields(True)
 
     # ------------------------------------------------------------------ listening party
 
@@ -727,12 +713,12 @@ class DayArc:
                 if last is None or (datetime.datetime.now() - last).total_seconds() >= extract_interval_sec:
                     self._last_extraction_time = datetime.datetime.now()
                     self._extraction_running = True
-                    def _run_and_clear():
+                    async def _extraction_task():
                         try:
-                            self._extract_song_fields()
+                            await self._extract_song_fields()
                         finally:
                             self._extraction_running = False
-                    asyncio.create_task(asyncio.to_thread(_run_and_clear))
+                    asyncio.create_task(_extraction_task())
 
             # 5. Midnight check
             if self._session_open and not self._midnight_fired:
