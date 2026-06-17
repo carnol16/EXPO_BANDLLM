@@ -7,7 +7,7 @@ song_states/
 # Claude
 .claude/
 docs/superpowers/
-._.claude
+._.claude/
 # Caches
 __pycache__/
 *.py[cod]
