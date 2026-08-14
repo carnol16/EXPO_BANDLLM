@@ -140,7 +140,7 @@ The first installation ran on a single Windows PC with an NVIDIA GPU. ACE-Step r
 ## Installation
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/carno16/EXPO_BANDLLM
 cd EXPO_BANDLLM
 python -m venv .venv
 
