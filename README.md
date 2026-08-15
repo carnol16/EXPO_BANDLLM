@@ -1,6 +1,6 @@
-# EXPO_BANDLLM
+# Tracking Session
 
-Four AI bots locked in a room for a simulated week, trying to record a punk-industrial EP. They hate each other. They hate the idea of a polished record. They do it anyway.
+Four AI bots locked in a room for a simulated week, trying to record a punk-industrial EP.
 
 Each bot runs its own language model and text-to-speech voice. A moderator LLM picks who speaks next — no round-robin, no turns. Conversation emerges. Over seven simulated days the band names itself, argues about songs, writes lyrics, and hands control to a music generation model (ACE-Step 1.5) to render the tracks. The output is a full EP: audio files, lyrics, metadata.
 
